@@ -33,7 +33,10 @@ def upload(name):
             f = open(f'{name}','rb')
             size = os.path.getsize(name)
         else:
-            f = open(f'{path}{name}','rb')
+            if path[-1] == '\\':
+                f = open(f'{path}{name}','rb')
+            else:
+                f = open(f'{path}\\{name}','rb')
             size = os.path.getsize(f'{path}{name}')
         len = 0
         while True:
@@ -131,6 +134,6 @@ while True:
             tic = int(cmd[1])
             print(f'进度条刷新间隔更改: {tic}')
         else:
-            print('雜魚！服务器酱不知道你在说什么')
+            print('雜魚❤！服务器酱不知道你在说什么')
         dsocket.close()
 

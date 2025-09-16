@@ -15,7 +15,7 @@ class ser():
         self.code = 'utf-8'
 
     def dir(self):
-        ls = os.listdir('d:\\python\\a\\tra\\file')
+        ls = os.listdir(self.path)
         l = ''
         for i in ls:
             l += i + '\n'
@@ -38,7 +38,10 @@ class ser():
     def rec(self,name,dsocket):
         if "\\" in name:
             name = name.split('\\')[-1]
-        f = open(f'{self.path}{name}','wb')
+        if self.path[-1] == '\\':
+            f = open(f'{self.path}{name}','wb')
+        else:
+            f = open(f'{self.path}\\{name}','wb')
         while True:
             data = dsocket.recv(self.buflen)
             if not data:
