@@ -25,15 +25,16 @@ def bar(m,n):
          [8,f'[■■■■■■■■□□] {n}:{m}'],
          [9,f'[■■■■■■■■■□] {n}:{m}'],
          [10,f'[■■■■■■■■■■] {n}:{m}']]
-    print(a[i][1])
+    if i < 10:
+        print(a[i][1])
 
 def upload(name):
     try:
-        if "\\" in name:
+        if "\\" in name or "/" in name:
             f = open(f'{name}','rb')
             size = os.path.getsize(name)
         else:
-            if path[-1] == '\\':
+            if path[-1] == '\\' or path[-1] == '/':
                 f = open(f'{path}{name}','rb')
             else:
                 f = open(f'{path}\\{name}','rb')
